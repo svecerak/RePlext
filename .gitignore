@@ -7,4 +7,4 @@ vuestuff.php
 node_modules/
 public/
 shared/
-
+db_credentials.php
