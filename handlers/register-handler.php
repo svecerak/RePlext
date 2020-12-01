@@ -33,7 +33,7 @@ if(isset($_POST['registerButton'])) {
 
 	if($wasSuccessful == true) {
 		$_SESSION['userLoggedIn'] = $username;
-		header("Location: http://localhost/TailwindCSS/layouts/main.blade.php#");
+		header("Location: http://localhost/TailwindCSS/layouts/index.php#");
 		echo "YOU ARE LOGGED IN";
 	} else {
 		echo "DIDNT GO THROUGH!";

@@ -3,4 +3,4 @@
 
 session_unset();
 session_destroy();
-header("Location: main.blade.php");
+header("Location: index.php");

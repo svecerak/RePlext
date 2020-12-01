@@ -13,7 +13,7 @@ if(isset($_POST['loginButton'])) {
 
     if($result == true) {
         $_SESSION['userLoggedIn'] = $username;
-        header("Location: ../layouts/main.blade.php");
+        header("Location: ../layouts/index.php");
     } else {
         echo "we have an error?";
     }
