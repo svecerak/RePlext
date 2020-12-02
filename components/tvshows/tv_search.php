@@ -1,6 +1,6 @@
-<div class="searched-tvshows bg-plex-background py-2 mt-2">
+<div class="searched-tvshows bg-plex-background py-2 mt-2 mx-3 md:mx-0">
         <h2 class="uppercase tracking-wider text-yellow-500 text-lg font-semibold">TV Shows</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-10 gap-6">
+        <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-10 gap-6">
     
             <?php
 

@@ -14,7 +14,7 @@
 
 
 <div class="container mx-auto px-1 pt-6">
-    <h2 class="tracking-wider text-gray-400 text-lg font-semibold mt-6">Result(s) for '<?php getInputValue($searchQuery)?>'</h2>
+    <h2 class="tracking-wider text-gray-400 text-lg font-semibold mt-6 ml-3 md:ml-0">Result(s) for '<?php getInputValue($searchQuery)?>'</h2>
 
     <?php include '../components/movie/movie_search.php' ?>
 

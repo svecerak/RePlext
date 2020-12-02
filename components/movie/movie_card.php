@@ -1,14 +1,22 @@
 
 <div class="movie-info border-b border-gray-800">
-    <div class="container mx-auto py-16 flex flex-row">
+    <div class="container mx-auto py-16 flex flex-col md:flex-row">
+
+
+        <!-- <div class="bg-purple-600 bg-opacity-50">
+        <img src="https://image.tmdb.org/t/p/w500/<?=$movieDetails['poster_path']?>" class='bg-purple-600 bg-opacity-55'>
+
+        </div> -->
+
+
     
         <!-- <div class=""> -->
-            <img src="https://image.tmdb.org/t/p/w500/<?=$movieDetails['poster_path']?>" class='w-64 shadow-xl rounded-md object-scale-down '>
+            <img src="https://image.tmdb.org/t/p/w500/<?=$movieDetails['poster_path']?>" class='w-64 shadow-xl rounded-md object-scale-down mx-4 md:mx-0'>
         <!-- </div> -->
 
 
 
-        <div class="ml-16">
+        <div class="mx-4 mt-4 md:ml-16 md:mt-4">
             <h1 class="text-2xl font-semibold"><?=$movieDetails['title']?></h1>
 
             <h2 class="text-md font-semibold mt-2">
@@ -25,9 +33,13 @@
                 </div>
                 <!-- <span class="mx-2 text-sm">|</span> -->
             </div>
+
             <!-- <div class="mt-5">
                 <button><img src="../images/imdb.png" alt="" class="w-10"></button>
             </div> -->
+
+
+
             <div class="mt-12 flex">
                 <button class="flex items-center bg-yellow-600 text-gray-900 rounded font-semibold px-2 py-1 hover:bg-yellow-500 hover:shadow-lg transition ease-in-out duration-350 focus:outline-none">
                     <img src="../assets/images/play.png" alt="" class="w-3 mx-2">
@@ -49,8 +61,10 @@
                 ?>
             </div>
 
+
+
             <div>
-                <h4 class="mt-8">
+                <h4 class="mt-8 ">
                     <?php echo $movieDetails['overview']?>
                 </h4>
             </div>
