@@ -8,6 +8,8 @@
   
   In its current iteration, there's a lot of improvement required in the application's back-end organization. The business logic isin't separated enough from the view at present, and would benefit from seperation into views and controller folders. The HTTP request organization and speed would greatly benefit from using cURL or an HTTP request client such as Guzzle.
   
+  As for the front-end, I used Tailwind CSS for styling. Having acquired an understanding of HTML and CSS when creating my portfolio website, I found Tailwind CSS very intuitive and helpful in creating flexible and responsive layouts.
+  
 Lots more to work on, still a work in progress.
 
 ![](assets/images/maincard_screenshot.jpg)
