@@ -2,7 +2,7 @@
 
   RePlext is a Request & Discover web application platform that gives Plex users the ability to easily search, manage and request content.   
 
-# RePlext as a learning exercise
+# What I've learned thus far
 
   Rather than diving directly into using frameworks to expedite the development process, I chose to first try building everything from scratch as a valuable learning experience. Frameworks such as Laravel offer an out-of-the-box HTTP client, authentication, ORM, etc. built around MVC architecture to make development easier and scalable. I felt that in order to fully appreciate and understand why web frameworks are so essential in modern web development, I had to encounter and experience some of the difficulties and challenges that are encountered in their absence. 
   
