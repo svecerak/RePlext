@@ -2,32 +2,41 @@
 
 	class Account {
 
+		// Instance variables
+
         private $con;
 		private $errorArray;
 
+
+		/**
+		 * Class constructor
+		 */
 		public function __construct($con) { // pass in $con vairable from register.php
             $this->con = $con; // assigning the con var from register.php to the private instance var in this class
 			$this->errorArray = array();
 		}
  
-        public function login($un, $pw) {
-            $pw = md5($pw);
-			$p_username = '';
-			$p_pass = '';
 
-			// $sql =  "SELECT * FROM users WHERE username='$un' AND password='$pw'";
-			
+		/**
+		 * Login function
+		 * TODO: Poor security, change to bcrypt
+		 */
+        public function login($username, $password) {
+            $pw = md5($password);
+			$p_username = '';
+			$p_pass = '';			
+
+			// SQL Query
 
 			$sql =  "SELECT * FROM users ";
 			$sql .= "WHERE username = ? ";
 			$sql .= "AND password = ?";
 
 			// Prepare statement
+
 			if ($stmt = $this->con->prepare($sql)) {
-
 				$stmt->bind_param("ss", $p_username, $p_pass);
-
-				$p_username = $un;
+				$p_username = $username;
 				$p_pass = $pw;
 
 				if ($stmt->execute()) {
@@ -36,37 +45,29 @@
 					if ($result->num_rows == 1) {
 						return true;
 					} else {
-						array_push($this->errorArray, Constants::$loginFailed);
+						$this->errorArray[] = Constants::$loginFailed;
 						return false;
 					}
 				}
 			} 
-			// Close statement
+
+			// Close statement and connection
+
 			$stmt->close();
-			// Close connection
 			$this->con->close();
          }    
 			
 
 
-
-            // $query = mysqli_query($this->con, $sql);
-
-            // if(mysqli_num_rows($query) == 1){
-            //     return true;
-            // } else {
-            //     array_push($this->errorArray, Constants::$loginFailed);
-            //     return false;
-            // }
-       
-
+		/**
+		 * Registration function
+		 */
 		public function register($un, $em, $em2, $pw, $pw2) {
 			$this->validateUsername($un);
 			$this->validateEmails($em, $em2);
 			$this->validatePasswords($pw, $pw2);
 
-			if(empty($this->errorArray) == true) {
-                //Insert into db
+			if(empty($this->errorArray)) {
                 return $this->insertUserDetails($un, $em, $pw);
 			} else {
 				return false;
@@ -74,22 +75,34 @@
 
 		}
 
+
+		/**
+		 * Check for errors
+		 */
 		public function getError($error) {
 			if(!in_array($error, $this->errorArray)) {
 				$error = "";
 			}
 			return "<span class='errorMessage'>$error</span>";
         }
-        
-
+		
+		
+		/**
+		 * Insert information into database
+		 * TODO: Poor security hashing function, change to bcrypt
+		 */
         private function insertUserDetails($un, $em, $pw) {
-            $encryptedPw = md5($pw); // OUTDATED TODO: Fix
+            $encryptedPw = md5($pw); 
             $profile_image = "assets/images/profile-pics/head_emerald.png";
 			$date = date("Y-m-d");
 			$id = '';
 
+			// SQL Query
+
 			$sql = "INSERT INTO users ";
 			$sql .= "VALUES (?, ?, ?, ?, ?, ?)";
+
+			// Prepare statement
 
 			$stmt = $this->con->prepare($sql);
 			$stmt->bind_param("ssssss", $id, $un, $em, $encryptedPw, $profile_image, $date);
@@ -98,85 +111,94 @@
 			return $stmt;
 		}
 			
-			
-			// $result = mysqli_query($this->con, "INSERT INTO users VALUES ('', '$un', '$fn', '$ln', '$em', '$encryptedPw', '$date', '$profilePic')");
-			
 
-
-			// return $result;
-            // return $stmt;
-        
-
-
-
-
-
-
-		private function validateUsername($un) {
-			if(strlen($un) > 25 || strlen($un) < 5) {
-				array_push($this->errorArray, "Your username must be between 5 and 25 characters");
+		/**
+		 * Validate username and save errors to array
+		 * 
+		 */
+		private function validateUsername($username) {
+			if(strlen($username) > 25 || strlen($username) < 5) {
+				$this->errorArray[] = Constants::$usernameCharacters;
 				return;
 			}
 
-            $checkUsernameQuery = mysqli_query($this->con, "SELECT username FROM users WHERE username='$un'");
-            if(mysqli_num_rows($checkUsernameQuery) != 0) {
-                array_push($this->errorArray, Constants::$usernameTaken);
-                return;
-            }
+			// SQL query
+
+			$sql  = "SELECT username ";
+			$sql .= "FROM users ";
+			$sql .= "WHERE username=?";
+
+			// Prepared statement
+
+			$stmt = $this->con->prepare($sql);
+			$stmt->bind_param("s", $username);
+			$stmt->execute();
+
+			// Check whether username has already been taken
+
+			$result = $stmt->get_result();
+
+			if($result->num_rows != 0) {
+				$this->errorArray[] = Constants::$usernameTaken;
+				return;
+			}
 		}
 
-		// private function validateFirstName($fn) {
-		// 	if(strlen($fn) > 25 || strlen($fn) < 2) {
-		// 		array_push($this->errorArray, "Your first name must be between 2 and 25 characters");
-		// 		return;
-		// 	}
-		// }
 
-		// private function validateLastName($ln) {
-		// 	if(strlen($ln) > 25 || strlen($ln) < 2) {
-		// 		array_push($this->errorArray, "Your last name must be between 2 and 25 characters");
-		// 		return;
-		// 	}
-		// }
-
+		/**
+		 * Validate emails, ensure they match
+		 */
 		private function validateEmails($em, $em2) {
+
 			if($em != $em2) {
-				array_push($this->errorArray, "Your emails don't match");
+				$this->errorArray[] = Constants::$emailsDoNotMatch;
 				return;
 			}
 
-			if(!filter_var($em, FILTER_VALIDATE_EMAIL)) {
-				array_push($this->errorArray, "Email is invalid");
+			else if(!filter_var($em, FILTER_VALIDATE_EMAIL)) {
+				$this->errorArray[] = Constants::$emailInvalid;
 				return;
 			}
 
-            $checkEmailQuery = mysqli_query($this->con, "SELECT email FROM users WHERE email='$em'");
-            if(mysqli_num_rows($checkEmailQuery) != 0) {
-                array_push($this->errorArray, Constants::$emailTaken);
-                return;
-            }
+			// SQL
 
+			$sql  = "SELECT email ";
+			$sql .= "FROM users ";
+			$sql .= "WHERE email=?";
+
+			// Prepared statement
+
+			$stmt = $this->con->prepare($sql);
+			$stmt->bind_param("s", $em);
+			$stmt->execute();
+
+			// Check whether email has already been taken
+
+			$result = $stmt->get_result();
+			
+			if($result->num_rows != 0) {
+				$this->errorArray[] = Constants::$emailTaken;
+			}
+
+			return;
 		}
 
+
+		/**
+		 * Validate passwords, ensure matching entries
+		 */
 		private function validatePasswords($pw, $pw2) {
 			
-			if($pw != $pw2) {
-				array_push($this->errorArray, "Your passwords don't match");
-				return;
-			}
+			if($pw != $pw2) 
+				$this->errorArray[] = Constants::$passwordsDoNoMatch;
+			
+			else if(preg_match('/[^A-Za-z0-9]/', $pw)) 
+				$this->errorArray[] = Constants::$passwordNotAlphanumeric;
+			
+			else if(strlen($pw) > 30 || strlen($pw) < 5) 
+				$this->errorArray[] = Constants::$passwordCharacters;
 
-			if(preg_match('/[^A-Za-z0-9]/', $pw)) {
-				array_push($this->errorArray, "Your password can only contain numbers and letters");
-				return;
-			}
-
-			if(strlen($pw) > 30 || strlen($pw) < 5) {
-				array_push($this->errorArray, "Your password must be between 5 and 30 characters");
-				return;
-			}
-
+			return;
 		}
-
-
 	}
 ?>
