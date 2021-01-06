@@ -1,6 +1,11 @@
 # RePlext
 
   RePlext is a Request & Discover web application platform that gives Plex users the ability to easily search, manage and request content.   
+  
+# Demo
+
+  [![RePlext Demo](https://img.youtube.com/vi/VIDEO-ID/0.jpg)](https://www.youtube.com/watch?v=30xBDmbHI30&feature=youtu.be)
+
 
 # What I've learned thus far
 
