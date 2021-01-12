@@ -28,6 +28,8 @@
             $db_user = $_SESSION['userLoggedIn'] ?? '';
             $db_rating = $movieDetails['vote_average'];
 
+            echo $db_date, $db_rating, $db_title;
+
 
             // if($db_title && $db_date && $db_tmdbid) {
             if(isset($_SESSION['userLoggedIn'])) {
@@ -39,6 +41,8 @@
 
                 // No duplicates found, Insert 
                 if($duplicates == 0) {
+                    // $sql = 'INSERT INTO requests (image, title, release_date, tmdb_id, user, rating) VALUES (?, ?, ?, ?, ?, ?)';
+                    echo "reached here";
                     $sql = 'INSERT INTO requests (image, title, release_date, tmdb_id, user, rating) VALUES (?, ?, ?, ?, ?, ?)';
 
                     if($stmt = $mysqli->prepare($sql)) {
@@ -49,6 +53,7 @@
                             $statusCode='Request added';
                             // echo json_encode(array("statusCode"=>200));
                         } else {
+                            printf("Error: %s.\n", $stmt->error);
                             $statusCode='Request failed';
                             // echo json_encode(array("statusCode"=>201));
                         }
