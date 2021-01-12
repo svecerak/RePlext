@@ -13,7 +13,7 @@
 
 
             if(isset($_POST['search']) &&  !empty($_POST['search'])) {
-                $movies = searchMovie($api, $searchQuery);
+                $movies = searchMovie($client, $api, $searchQuery);
 
                 foreach($movies as $movie) {
         ?>
@@ -35,7 +35,7 @@
                     <?php echo $movie['title']?>
                 </div>
                 <p class="text-sm text-gray-500 hover:text-gray-600">
-                    <?php echo exists(substr($movie['release_date'], 0, 4)); ?>
+                    <!-- <?php echo exists(substr($movie['release_date'], 0, 4)); ?> -->
                 </p>
             </div>     
         </div>

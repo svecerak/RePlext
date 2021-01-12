@@ -46,51 +46,6 @@
                 <?php if (++$i == 10) break;  ?>
                 <?php endforeach ?>
 
-
-                <!-- <div class="mt-8">
-                    <a href="#">
-                        <img src="../images/BW.jpg" class="rounded-lg" alt="">
-                    </a>
-                    <div class="mt-2"> 
-                        <a href="#" class="text-lg mt-2 hover:text-gray-300">Black Widow</a>
-
-
-                        <div class="flex items-center text-gray-400 mt-2">
-                            <span class="w-4 mr-1"><img src="../images/star.png" alt=""></span>
-                            <span class="ml-1">5.9</span>
-                            <span class="mx-2">|</span>
-                            <span>1986</span>
-                        </div>
-                        <div class="text-gray-400">
-                            Action
-                        </div>
-                    </div>     
-                </div>
-
-
-
-
-
-
-                <div class="mt-8">
-                    <a href="#">
-                        <img src="../images/QP2.jpg" class="mb-2" alt="">Quiet Place: Part II
-                    </a>
-                    <div class="flex items-center text-gray-400 mt-2">
-                        <span class="w-4 mr-1"><img src="../images/star.png" alt=""></span>
-                        <span class="ml-1">7.0</span>
-                        <span class="mx-2">|</span>
-                        <span>1986</span>
-                    </div>
-                    <div class="text-gray-400">
-                        Thriller, Horror
-                    </div>
-                </div>
-                
-            
-  
-                <!--  -->
-
             </div>
         </div> 
         <!--END OF 'POPULAR' SECTION -->
@@ -102,8 +57,6 @@
         <div class="now-playing bg-plex-background rounded-lg mt-12 mx-3 md:mx-0 lg:mx-0"> 
             <h2 class="uppercase tracking-wider text-yellow-500 text-lg font-semibold">Now Playing</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-8">
-
-
 
                     <?php
                         $nowPlayingMovies = getMovieLists($api, $nowPlaying);
@@ -132,9 +85,6 @@
                 </div> 
         </div>
         <!--END OF 'NOW PLAYING' SECTION -->
-
-
-
 
         <!--START OF 'COMING SOON' SECTION -->
         <div class="coming-soon bg-plex-background rounded-lg mt-12 mx-3 md:mx-0 lg:mx-0"> 
@@ -168,7 +118,6 @@
                 </div> 
         </div>
         <!--END OF COMING SOON SECTION -->
-
 
     </div>
 </body>

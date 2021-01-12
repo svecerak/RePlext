@@ -6,7 +6,7 @@ $currentUser = $_SESSION['userLoggedIn'] ?? '';
 
 
 
-<div class="container mx-auto mt-16">
+<div class="container mx-auto mt-16 px-8 md:px-0">
     <!-- <div class="flex items-center block"> -->
         <div class="block font-semibold text-2xl text-gray-100">
             <h1>Account Details</h1>

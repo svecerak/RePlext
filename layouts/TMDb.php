@@ -1,7 +1,15 @@
 <?php 
 
-include 'API_key.php';
-// include 'config.php';
+require_once "../vendor/autoload.php";
+require_once 'API_key.php';
+
+use GuzzleHttp\Client;
+
+$client = new Client([
+    'base_uri' => 'https://api.themoviedb.org/3/'
+]);
+  
+
 
 
 $base_url = 'https://api.themoviedb.org/3';
@@ -18,9 +26,7 @@ $trending = '/trending/movie/day';
 $multiSearch = '/search/multi';
 // <------------------------------> 
     
-// $popularMovies = getMovieLists($api, $popular);
-// $nowPlayingMovies = getMovieLists($api, $nowPlaying);
-// $upcomingMovies = getMovieLists($api, $upcoming);
+
 $trendingMovies = getMovieLists($api, $trending);
 
 
@@ -56,17 +62,32 @@ function getInputValue($name) {
 }
 
 
+ 
 
-function searchMovie($api, $query) {
-    $url = "https://api.themoviedb.org/3/search/movie?api_key={$api}&language=en-US&query={$query}&page=1";
-    $results = getJson($url);
+
+function searchMovie($client, $api, $query) {
+    $response = $client->request('GET', "search/movie?api_key={$api}&language=en-US&query={$query}&page=1");
+    $body = $response->getBody();
+    $results = json_decode($body, true);
 
     $movieArray = [];
-    foreach($results['results'] as $result) {
-        $movieArray[] = $result;
-    }
-    return $movieArray;
+        foreach($results['results'] as $result) {
+            $movieArray[] = $result;
+        }
+        return $movieArray;
 }
+
+
+// function searchMovie($api, $query) {
+//     $url = "https://api.themoviedb.org/3/search/movie?api_key={$api}&language=en-US&query={$query}&page=1";
+//     $results = getJson($url);
+
+//     $movieArray = [];
+//     foreach($results['results'] as $result) {
+//         $movieArray[] = $result;
+//     }
+//     return $movieArray;
+// }
 
 /* Can just use this function, and specify path in respective php file */
 function searchTelevision($api, $path, $query) {

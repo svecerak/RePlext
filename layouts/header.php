@@ -31,10 +31,10 @@
                     </a>
                 </li>
                 <li class="ml-6 md:ml-16 mt-1">
-                    <a href="#" class="hover:text-gray-300 font-semibold">Movies</a>
+                    <a href="index.php" class="hidden md:block hover:text-gray-300 font-semibold">Movies</a>
                 </li>
                 <li class="ml-6 mt-1">
-                    <a href="#" class="hover:text-gray-300 font-semibold">TV Shows</a>
+                    <a href="tvshows.php" class="hidden md:block hover:text-gray-300 font-semibold">TV Shows</a>
                 </li>
                 <li class="ml-6 mt-1">   
                     <a href="/TailwindCSS/layouts/requests.php?sort=DESC" class="hover:text-gray-300 font-semibold">Requests</a>
@@ -48,7 +48,7 @@
                 
                 <form method="POST" action="/TailwindCSS/layouts/search.php">
                     <div class="relative">
-                        <input type="text" class="bg-gray-800 rounded w-64 px-4 py-2 pl-8 focus:bg-gray-600 focus:outline-none focus:shadow-outline placeholder-current text-white focus:text-black hover:shadow-lg" name="search" placeholder="Search">
+                        <input type="text" class="bg-gray-800 rounded w-64 px-4 py-2 pl-8 focus:bg-gray-300 focus:outline-none focus:shadow-outline placeholder-current text-white focus:text-black hover:shadow-lg" name="search" placeholder="Search">
                         <div class="absolute top-0">
 
                             <!-- <img src="../assets/images/search2.png" class="fill-current text-gray-500 w-4 mt-3 ml-2" alt="">  -->
@@ -65,36 +65,36 @@
                     if(isset($_SESSION['userLoggedIn'])) { 
                         
                         echo  '<form action="logout.php" method="POST">
-                            <button class="bg-teal-600 rounded-md px-3 py-1 text-gray-400 font-semibold uppercase hover:text-gray-200 focus:outline-rounded" type="submit" name="logoutButton">Sign Out</button>    
+                            <button class="bg-teal-600 rounded-md px-3 py-1 mt-2 md:mt-0 hidden md:inline-block text-gray-400 font-semibold uppercase hover:text-gray-200 focus:outline-rounded" type="submit" name="logoutButton">Sign Out</button>    
                         </form>';
                     } else {
-                        echo ' <a class=" px-3 py-2 text-center font-semibold uppercase text-gray-400 hover:text-gray-200" href="/tailwindcss/layouts/login.php">
+                        echo ' <a class=" px-3 py-2 hidden md:inline-block text-center font-semibold uppercase text-gray-400 hover:text-gray-200" href="/tailwindcss/layouts/login.php">
                         Sign in
                         </a>';
-                        echo '<a class="bg-orange-600 rounded-md px-3 py-1 text-gray-400 font-semibold uppercase hover:text-gray-200" href="/tailwindcss/layouts/register.php">
+                        echo '<a class="bg-orange-600 rounded-md px-3 py-1 hidden md:inline-block text-gray-400 font-semibold uppercase hover:text-gray-200" href="/tailwindcss/layouts/register.php">
                             Sign up
                         </a>';
                     } 
                     ?>
                 </div>
 
-                <div class="invisible md:visible navbar-divider mx-4 w-01 h-10 bg-gray-700      "> </div>
+                <div class="hidden md:block navbar-divider mx-4 w-01 h-10 bg-gray-700"> </div>
         
                 <!-- <div class="navbar-divider mx-4 w-01 h-10 bg-gray-700      "> </div> -->
 
-                <a class="focus:outline-none" href="/TailwindCSS/layouts/user.php" >
+                <a class="focus:outline-none hidden md:block" href="/TailwindCSS/layouts/user.php" >
                     <div class="relative"> 
                         <!-- <a href="" class=""> -->
-                        <img src="../assets/images/me.jpg" class="rounded-full w-10 h-10 border border-gray-700" alt="">                        
+                        <img src="../assets/images/genericprofile.png" class="rounded-full w-10 h-10 border border-gray-700" alt="">                        
                         <!-- </a> -->
                         <div class="absolute top-0">
-                            <svg class="text-gray-500 h-4 w-4 mt-3 ml-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                            <!-- <svg class="text-gray-500 h-4 w-4 mt-3 ml-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg> -->
                         </div>
                     </div>   
                 </a>
 
                 <!-- START of dropdown menu -->
-                <?php $currentUser = $_SESSION['userLoggedIn'] ?? ''; ?>
+                <?php $currentUser = $_SESSION['userLoggedIn'] ?? 'Log In'; ?>
                 <div class="relative hidden">
                     <div class="absolute right-0 w-48 bg-gray-300 text-black rounded-lg py-2 shadow-xl mt-6 ">
                         <div class="block px-4 py-2 text-gray-900  uppercase font-bold border-b border-gray-400" ><?php echo $currentUser?></div>
@@ -105,13 +105,6 @@
                 </div>  
                 <!-- END of dropdown menu -->
 
-
             </div>
-
-             
- 
         </div>
-            
-     
-
     </nav>

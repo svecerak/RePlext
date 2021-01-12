@@ -3,6 +3,6 @@
     <div>
         <p>Github</p>
         <p>LinkedIN</p>
-        <p>Blah blah blah, built with HTML, Tailwind CSS, Javascript, PHP & MySQL</p>
+        <p>HTML, Tailwind CSS, Javascript, PHP & MySQL</p>
     </div>
 </footer>
