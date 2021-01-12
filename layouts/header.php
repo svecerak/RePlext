@@ -26,7 +26,7 @@
             <ul class="flex flex-col md:flex-row items-center">
             <!-- flex flex-col md:flex-row items-center -->
                 <li class="ml-6 md:ml-0">
-                    <a href="/TailwindCSS/layouts/index.php#"> 
+                    <a href="./index.php#"> 
                         <img src="../assets/images/whiteplex.png" class="w-16" alt="">
                     </a>
                 </li>
@@ -37,7 +37,7 @@
                     <a href="tvshows.php" class="hidden md:block hover:text-gray-300 font-semibold">TV Shows</a>
                 </li>
                 <li class="ml-6 mt-1">   
-                    <a href="/TailwindCSS/layouts/requests.php?sort=DESC" class="hover:text-gray-300 font-semibold">Requests</a>
+                    <a href="requests.php?sort=DESC" class="hover:text-gray-300 font-semibold">Requests</a>
                 </li>
             </ul>
 
@@ -46,7 +46,7 @@
 
             <div class="flex flex-col md:flex-row items-center">
                 
-                <form method="POST" action="/TailwindCSS/layouts/search.php">
+                <form method="POST" action="search.php">
                     <div class="relative">
                         <input type="text" class="bg-gray-800 rounded w-64 px-4 py-2 pl-8 focus:bg-gray-300 focus:outline-none focus:shadow-outline placeholder-current text-white focus:text-black hover:shadow-lg" name="search" placeholder="Search">
                         <div class="absolute top-0">
@@ -68,10 +68,10 @@
                             <button class="bg-teal-600 rounded-md px-3 py-1 mt-2 md:mt-0 hidden md:inline-block text-gray-400 font-semibold uppercase hover:text-gray-200 focus:outline-rounded" type="submit" name="logoutButton">Sign Out</button>    
                         </form>';
                     } else {
-                        echo ' <a class=" px-3 py-2 hidden md:inline-block text-center font-semibold uppercase text-gray-400 hover:text-gray-200" href="/tailwindcss/layouts/login.php">
+                        echo ' <a class=" px-3 py-2 hidden md:inline-block text-center font-semibold uppercase text-gray-400 hover:text-gray-200" href="login.php">
                         Sign in
                         </a>';
-                        echo '<a class="bg-orange-600 rounded-md px-3 py-1 hidden md:inline-block text-gray-400 font-semibold uppercase hover:text-gray-200" href="/tailwindcss/layouts/register.php">
+                        echo '<a class="bg-orange-600 rounded-md px-3 py-1 hidden md:inline-block text-gray-400 font-semibold uppercase hover:text-gray-200" href="register.php">
                             Sign up
                         </a>';
                     } 
@@ -82,7 +82,7 @@
         
                 <!-- <div class="navbar-divider mx-4 w-01 h-10 bg-gray-700      "> </div> -->
 
-                <a class="focus:outline-none hidden md:block" href="/TailwindCSS/layouts/user.php" >
+                <a class="focus:outline-none hidden md:block" href="user.php" >
                     <div class="relative"> 
                         <!-- <a href="" class=""> -->
                         <img src="../assets/images/genericprofile.png" class="rounded-full w-10 h-10 border border-gray-700" alt="">                        
@@ -98,7 +98,7 @@
                 <div class="relative hidden">
                     <div class="absolute right-0 w-48 bg-gray-300 text-black rounded-lg py-2 shadow-xl mt-6 ">
                         <div class="block px-4 py-2 text-gray-900  uppercase font-bold border-b border-gray-400" ><?php echo $currentUser?></div>
-                        <a class="block px-4 py-2 text-gray-800 hover:bg-gray-600 hover:text-white font-semibold" href="/tailwindcss/layouts/user.php">Account</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-gray-600 hover:text-white font-semibold" href="user.php">Account</a>
                         <a class="block px-4 py-2 text-gray-800 hover:bg-gray-600 hover:text-white font-semibold" href="">Settings</a>
                         <a class="block px-4 py-2 text-gray-800 hover:bg-gray-600 hover:text-white font-semibold" href="">Logout</a>
                     </div>
