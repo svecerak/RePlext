@@ -58,7 +58,6 @@ class Account {
 		}    
 		
 
-
 	/**
 	 * Registration function
 	 */
@@ -72,7 +71,6 @@ class Account {
 		} else {
 			return false;
 		}
-
 	}
 
 
@@ -95,18 +93,21 @@ class Account {
 		$encryptedPw = md5($pw); 
 		$profile_image = "../assets/images/profile-pics/head_emerald.png";
 		$date = date("Y-m-d");
-		$id = '';
 
 		// SQL Query
 
-		$sql = "INSERT INTO users ";
-		$sql .= "VALUES (?, ?, ?, ?, ?, ?)";
+		$sql = 'INSERT INTO users (username, email, password, profile_image) ';
+		$sql .= 'VALUES (?, ?, ?, ?)';
 
 		// Prepare statement
 
-		$stmt = $this->con->prepare($sql);
-		$stmt->bind_param("ssssss", $id, $un, $em, $encryptedPw, $profile_image, $date);
-		$stmt->execute();
+		if($stmt = $this->con->prepare($sql)) {
+			$stmt->bind_param("ssss", $un, $em, $encryptedPw, $profile_image);
+			$stmt->execute();
+		} else {
+			$error = $this->con->errno;
+			echo $error;
+		}
 
 		return $stmt;
 	}
