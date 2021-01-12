@@ -93,7 +93,7 @@ class Account {
 	 */
 	private function insertUserDetails($un, $em, $pw) {
 		$encryptedPw = md5($pw); 
-		$profile_image = "assets/images/profile-pics/head_emerald.png";
+		$profile_image = "../assets/images/profile-pics/head_emerald.png";
 		$date = date("Y-m-d");
 		$id = '';
 

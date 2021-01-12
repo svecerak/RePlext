@@ -6,17 +6,7 @@
     $movieDetails = getMovieDetails($api, $id); 
     $movieReviews = getMovieReviews($api, $id);
     $relatedMovies = getRelated($api, $id);
-    // $castMembers = getCast($api, $id);
     $movieImages = getMovieImages($api, $id);
-    // $directorName = getDirector($castMembers['crew']);
-    // $verifiedWriters = confirmScreenplayWriters($castMembers['crew']);
-
-    // Need to make a class to instantiate mysqli object
-    // function checkDuplicates($id) {
-    //     $check = "SELECT * FROM requests WHERE tmdb_id = '".$id."' ";
-    //     $result = $mysqli->query($check);
-    //     return $result->num_rows;
-    // }
 
     $statusCode = '';
 
@@ -28,21 +18,20 @@
             $db_user = $_SESSION['userLoggedIn'] ?? '';
             $db_rating = $movieDetails['vote_average'];
 
-            echo $db_date, $db_rating, $db_title;
-
 
             // if($db_title && $db_date && $db_tmdbid) {
+
             if(isset($_SESSION['userLoggedIn'])) {
 
                 // Check database for existing entry, prevent duplicates
+
                 $check = "SELECT * FROM requests WHERE tmdb_id = '".$db_tmdbid."' ";
                 $result = $mysqli->query($check);
                 $duplicates = $result->num_rows;
 
                 // No duplicates found, Insert 
+
                 if($duplicates == 0) {
-                    // $sql = 'INSERT INTO requests (image, title, release_date, tmdb_id, user, rating) VALUES (?, ?, ?, ?, ?, ?)';
-                    echo "reached here";
                     $sql = 'INSERT INTO requests (image, title, release_date, tmdb_id, user, rating) VALUES (?, ?, ?, ?, ?, ?)';
 
                     if($stmt = $mysqli->prepare($sql)) {
@@ -60,6 +49,7 @@
                     }
                 
                 // Change to DELETE operation
+
                 } else {
                     $statusCode = "Already in database";
                 }
@@ -74,15 +64,6 @@
 
 
 ?>
-
-    <!-- <div class="mx-auto w-64 text-center"> 
-        <h2 class="text-blue-700 bg-blue-200 py-3 px-5 rounded-md absolute">Log in to make requests!</h2>
-    </div> -->
-
-
-<!-- echo '<div class="container text-center font-semibold">You must be logged in to do that!</div>'; -->
-
-
 
 
     <div class="container mx-auto pt-12">
