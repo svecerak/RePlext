@@ -7,7 +7,7 @@
 // define('DB_NAME', "replext");
 
 // Remote connection
-define('DB_SERVER', "db4free.net");
-define('DB_USERNAME', "sasavec");
-define('DB_PASS', "1cool134");
-define('DB_NAME', "replext");
+define('DB_SERVER', "freedb.tech");
+define('DB_USERNAME', "freedbtech_svecerak");
+define('DB_PASS', "mydemopw34");
+define('DB_NAME', "freedbtech_replext");

@@ -59,7 +59,7 @@ function getInputValue($name) {
             </div>
             <div class="text-center mb-12">  
                <span>Already have an account with us?</span>
-               <a href="/tailwindcss/layouts/login.php" class="font-semibold text-gray-700 hover:text-orange-600">Sign In!</a>
+               <a href="layouts/login.php" class="font-semibold text-gray-700 hover:text-orange-600">Sign In!</a>
             </div>
         </form>
     </div>

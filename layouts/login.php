@@ -34,7 +34,7 @@ include '../handlers/login-handler.php';
 
                 <div>
                     <span class="text-gray-700">Don't have an account yet?</span>
-                    <a href="/tailwindcss/layouts/register.php" class="text-gray-700 font-semibold hover:text-orange-600">Register here!</a>
+                    <a href="layouts/register.php" class="text-gray-700 font-semibold hover:text-orange-600">Register here!</a>
                 </div>
             </div>
         </form>
