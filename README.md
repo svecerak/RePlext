@@ -1,6 +1,8 @@
 # RePlext
 
-  RePlext is a Request & Discover web application platform that gives Plex users the ability to easily search, manage and request content. I manage my own Plex media server as a hobby, and share access to its content with a select few friends. I soon found it troublesome keeping track of requests, and decided to build this application as both a way to learn about full-stack development and to solve a problem I face in the real world. By allowing users to register for an account and request content, it allows me to keep all requests centralized and easily accessible.     
+  RePlext is a Request & Discover web application platform that gives Plex users the ability to easily search, manage and request content. I manage my own Plex media server as a hobby, and share access to its content with a select few friends. I soon found it troublesome keeping track of requests, and decided to build this application as both a way to learn about full-stack development and to solve a problem I face in the real world. By allowing users to register for an account and request content, it allows me to keep all requests centralized and easily accessible.
+  
+ www.sasa-replext.herokuapp.com
   
 # Demo - Click to play
 
